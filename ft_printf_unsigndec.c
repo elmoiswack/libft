@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf_unsigndec.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 11:26:10 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/21 11:48:54 by dhussain         ###   ########.fr       */
+/*   Created: 2022/10/18 12:17:33 by dhussain          #+#    #+#             */
+/*   Updated: 2022/12/14 11:27:01 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_printf_unsigndec(va_list ptr, int len)
 {
-	int		i;
-	int		j;
-	char	*ptr;
-	
-	ptr = (char *) malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
+	unsigned int	j;
+	int				temp;
+	char			str[15];
+
+	j = va_arg(ptr, unsigned int);
+	if (j == 0)
 	{
-		ptr[j] = s1[i];
-		j++;
-		i++;
+		write(1, "0", 1);
+		len++;
 	}
-	i = 0;
-	while (s2[i] != '\0')
+	temp = 0;
+	while (j != 0)
 	{
-		ptr[j] = s2[i];
-		j++;
-		i++;
+		str[temp] = (j % 10) + 48;
+		j = j / 10;
+		temp++;
 	}
-	ptr[j] = '\0';
-	return (ptr);
+	temp--;
+	while (temp >= 0)
+	{
+		write(1, &str[temp], 1);
+		len++;
+		temp--;
+	}
+	return (len);
 }

@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 11:26:10 by dhussain          #+#    #+#             */
-/*   Updated: 2022/12/21 11:48:54 by dhussain         ###   ########.fr       */
+/*   Created: 2022/10/18 12:14:49 by dhussain          #+#    #+#             */
+/*   Updated: 2022/12/14 11:27:09 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_printf_string(va_list ptr, int len)
 {
-	int		i;
+	char	*str;
 	int		j;
-	char	*ptr;
-	
-	ptr = (char *) malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!ptr)
-		return (NULL);
-	i = 0;
+
+	str = va_arg(ptr, char *);
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (len + 6);
+	}
+	if (str[0] == '\0')
+		return (len);
 	j = 0;
-	while (s1[i] != '\0')
+	while (str[j] != '\0')
 	{
-		ptr[j] = s1[i];
+		write(1, &str[j], 1);
 		j++;
-		i++;
+		len++;
 	}
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		ptr[j] = s2[i];
-		j++;
-		i++;
-	}
-	ptr[j] = '\0';
-	return (ptr);
+	return (len);
 }

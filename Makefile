@@ -35,7 +35,20 @@ SRC	:=	ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_split.c
+		ft_split.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		ft_printf.c \
+		ft_printf_pointer.c \
+		ft_printf_char.c \
+		ft_printf_int.c \
+		ft_printf_string.c \
+		ft_printf_unsigndec.c \
+		ft_printf_hexalower.c \
+		ft_printf_hexaupper.c \
+		ft_intcheck.c \
+		ft_mallocaaa.c \
+		
 
 OBJ := $(SRC:.c=.o)
 

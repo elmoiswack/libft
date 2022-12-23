@@ -6,15 +6,20 @@
 /*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:30:36 by dhussain          #+#    #+#             */
-/*   Updated: 2022/10/19 14:27:27 by dhussain         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:38:49 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdarg.h>
 
+//libft
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
@@ -49,5 +54,33 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
+
+//get next line
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+char	*get_next_line(int fd);
+char	*finish_sen(char *sen, char *read_ptr, int i, int j);
+char	*end_file(char *sen, char *read_ptr, int read_count, int j);
+int		copy_cat(char *sen, char *read_ptr, int j);
+char	*make_sen(char *read_ptr, char *sen, int fd);
+char	*new_malloc(char *str);
+char	*gnl_cpy(char *dest, char *src);
+int		strlength(char *str);
+int		read_count_check(char *sen, char *read_ptr, int read_count);
+
+// printf
+int				ft_printf_char(va_list ptr, int len);
+int				ft_printf_string(va_list ptr, int len);
+int				ft_printf_pointer(va_list ptr, int len);
+int				ft_printf_int(va_list ptr, int len);
+int				ft_printf_unsigndec(va_list ptr, int len);
+int				ft_printf_hexalower(va_list ptr, int len);
+int				ft_printf_hexaupper(va_list ptr, int len);
+int				ft_printf_check(const char *string, int i, va_list ptr, int len);
+unsigned long	intcheck(long j);
+char			*ft_mallocaaa(unsigned long j);
+int				ft_printf(const char *string, ...);
 
 #endif

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memmove.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: dhussain <marvin@codam.nl>                   +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/06 14:14:16 by dhussain      #+#    #+#                 */
-/*   Updated: 2022/10/11 17:18:43 by dhussain      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dhussain <dhussain@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/06 14:14:16 by dhussain          #+#    #+#             */
+/*   Updated: 2022/12/14 12:19:10 by dhussain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-static void	*cpy(unsigned char *tsrc, unsigned char *tdest,
+static void	*mem_cpy(unsigned char *tsrc, unsigned char *tdest,
 				size_t i, size_t len);
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
@@ -31,7 +31,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (tdest);
 	if (tsrc > tdest)
 	{
-		cpy(tsrc, tdest, i, len);
+		mem_cpy(tsrc, tdest, i, len);
 		return (tdest);
 	}
 	else
@@ -44,7 +44,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (tdest);
 }
 
-static void	*cpy(unsigned char *tsrc, unsigned char *tdest,
+static void	*mem_cpy(unsigned char *tsrc, unsigned char *tdest,
 			size_t i, size_t len)
 {
 	while (i < len)
